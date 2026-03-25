@@ -1,0 +1,45 @@
+# Java / Maven
+backend/target/
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*
+
+# Maven Wrapper
+!backend/.mvn/wrapper/maven-wrapper.jar
+
+# Angular / Node
+frontend/node_modules/
+frontend/.angular/
+frontend/dist/
+frontend/.sass-cache/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# MkDocs generated site
+site/
+
+# Claude Code
+.claude/
+
+# Maven local settings (contains no secrets but is machine-specific)
+backend/settings-local.xml
+
+# Misc
+*.swp
+*.swo
+*~

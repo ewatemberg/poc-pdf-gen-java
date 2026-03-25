@@ -1,0 +1,58 @@
+<mat-toolbar color="primary" class="app-toolbar">
+  <span>POC - Comparacion de Librerias PDF</span>
+  <span class="spacer"></span>
+  <button mat-stroked-button (click)="generateAll()" class="generate-all-btn">
+    Generar Todos
+  </button>
+</mat-toolbar>
+
+<div class="content">
+  <!-- Library Cards -->
+  <div class="cards-grid">
+    @for (lib of libraries(); track lib.name) {
+    <mat-card class="library-card">
+      <mat-card-header>
+        <mat-card-title>{{ lib.name | uppercase }}</mat-card-title>
+        <mat-card-subtitle>v{{ lib.version }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chip-row">
+          <span class="chip" [class]="'chip-' + getLicenseColor(lib.license)">
+            {{ lib.license }}
+          </span>
+        </div>
+        <p class="approach">{{ lib.approach }}</p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary"
+                (click)="generatePdf(lib)"
+                [disabled]="loadingLibrary() === lib.name">
+          @if (loadingLibrary() === lib.name) {
+            <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+            Generar
+          }
+        </button>
+        <button mat-button color="accent" (click)="downloadPdf(lib)">
+          Descargar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+
+  <!-- PDF Preview -->
+  @if (previewUrl()) {
+  <mat-card class="preview-card">
+    <mat-card-header>
+      <mat-card-title>Preview: {{ previewLibrary() | uppercase }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <iframe [src]="previewUrl()" class="pdf-preview"></iframe>
+    </mat-card-content>
+  </mat-card>
+  }
+
+  <!-- Comparison Table -->
+  <app-comparison-table [results]="results()" />
+</div>

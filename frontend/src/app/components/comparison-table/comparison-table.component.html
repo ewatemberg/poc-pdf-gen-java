@@ -1,0 +1,29 @@
+@if (results().length > 0) {
+<mat-card class="comparison-card">
+  <mat-card-header>
+    <mat-card-title>Tabla Comparativa de Rendimiento</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table mat-table [dataSource]="results()" class="comparison-table">
+      <ng-container matColumnDef="libraryName">
+        <th mat-header-cell *matHeaderCellDef>Libreria</th>
+        <td mat-cell *matCellDef="let r">{{ r.libraryName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="serverTimeMs">
+        <th mat-header-cell *matHeaderCellDef>Tiempo Server (ms)</th>
+        <td mat-cell *matCellDef="let r">{{ r.serverTimeMs }}</td>
+      </ng-container>
+      <ng-container matColumnDef="clientTimeMs">
+        <th mat-header-cell *matHeaderCellDef>Tiempo Total (ms)</th>
+        <td mat-cell *matCellDef="let r">{{ r.clientTimeMs }}</td>
+      </ng-container>
+      <ng-container matColumnDef="sizeKb">
+        <th mat-header-cell *matHeaderCellDef>Tamano (KB)</th>
+        <td mat-cell *matCellDef="let r">{{ r.sizeKb | number:'1.1-1' }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+}

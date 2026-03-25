@@ -1,0 +1,21 @@
+site_name: POC - Librerias de Generacion de PDF
+site_description: Proof of Concept comparando librerias de generacion de PDF en Java
+
+nav:
+  - Inicio: index.md
+  - Arquitectura: architecture.md
+  - Librerias:
+    - PDFBox: libraries/pdfbox.md
+    - iText: libraries/itext.md
+    - Flying Saucer: libraries/flysaucer.md
+    - JasperReports: libraries/jasper.md
+    - OpenPDF: libraries/openpdf.md
+    - OpenHTMLtoPDF: libraries/openhtmltopdf.md
+    - Apache FOP: libraries/fop.md
+  - Comparacion Tecnica: comparison.md
+  - Costos de Aprendizaje: cost-analysis.md
+  - Casos de Uso: use-cases.md
+  - Guia de Instalacion: setup.md
+
+plugins:
+  - techdocs-core
